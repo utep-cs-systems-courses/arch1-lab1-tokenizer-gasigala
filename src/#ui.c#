@@ -1,17 +1,19 @@
+
 #include <stdio.h>
 
 int main()
 {
   puts("hello");
-  fputs("type something bro... idgaf whatever is cool\n",stdout);
+  fputs("type something bro... idgaf whatever is cool",stdout);
   int input;
-  input getchar();
+  if ( input == EOF){
+    goto done;
+  }
   switch(input){
   case 'p':
     puts("you are pushing p!....");
-    puts("you a playa\n");
+    puts("you a playa");
     break;
   default:
     puts("you NOT P");
-  }
 }
