@@ -14,8 +14,10 @@ int non_space_char(char c)
 
 char *word_start(char *s)
 {
-  do{
-    if(non_space_char(*s)){
+  do
+    {
+    if(non_space_char(*s))
+      {
       return s;
     }
   }while(*(++s) != '\0');
@@ -24,8 +26,10 @@ char *word_start(char *s)
 
 char *word_terminator(char *word)
 {
-  while(word != 0){
-    if(!non_space_char(*word)){
+  while(word != 0)
+    {
+    if(!non_space_char(*word))
+      {
       return word;
     }
     word++;
@@ -35,7 +39,8 @@ char *word_terminator(char *word)
 
 int count_words(char *s){
   int count =0;
-  while(*s != '\0'){
+  while(*s != '\0')
+    {
     s = word_start(s);
     s = word_terminator(s);
     count++;
@@ -57,7 +62,8 @@ if(!out_str)
  for (short i =0; i <len; i++)
   {
     *c = *in_str;
-    if( *c =='\0'){
+    if( *c =='\0')
+      {
       break;
     }
     c++;
@@ -72,7 +78,8 @@ char **tokenize(char* str){
   int words = count_words(str);
   char **tokens = malloc(sizeof(char*) * (words +1));
 
-  if(!tokens){
+  if(!tokens)
+    {
     fprintf(stderr, "tokenize memory allocation eror");
     exit(EXIT_FAILURE);
   }
@@ -107,7 +114,8 @@ void free_tokens(char **tokens)
 {
   char **token = tokens;
 
-  while(*token != 0){
+  while(*token != 0)
+    {
     free(*token);
     token++;
   }

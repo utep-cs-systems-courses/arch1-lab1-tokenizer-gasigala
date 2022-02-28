@@ -6,22 +6,26 @@
 
 static void process_command(char *buffer, List *history, int hist_len)
 {
-  if(buffer[1] == ' '|| buffer[1] == 'h'){
+  if(buffer[1] == ' '|| buffer[1] == 'h')
+    {
     printf("\nHistory\n");
     print_history(history);
   }
-  else if(buffer[1]== 'q'){
+  else if(buffer[1]== 'q')
+    {
 	puts("temination command recieved\n");
 	free_history(history);
 	exit(EXIT_SUCCESS);
       }
-  else{
-
+  else
+    {
       int id = atoi(buffer + 1);
-      if(id >0){
+      if(id >0)
+	{
 	char *str = get_history(history, hist_len-id +1);
 	
-	if(!str){
+	if(!str)
+	  {
 	  puts("error no history found");
 	  return;
 	}
@@ -29,7 +33,8 @@ static void process_command(char *buffer, List *history, int hist_len)
 	print_tokens(tokens);
 	free_tokens(tokens);
       }
-      else{
+      else
+	{
 	puts("errow invalid index");
 	return;
       }
@@ -47,14 +52,17 @@ int main()
   char **tokens;
   int history_len =0;
   
-  while(1){
+  while(1)
+    {
     printf("$ ");
     fgets(a, BUFFERSIZE, stdin);
 
-    if(a[0] == '!'){
+    if(a[0] == '!')
+      {
       process_command(a, history, history_len);
     }
-    else{
+    else
+      {
       puts(a);
       add_history(history, a);
       history_len++;
